@@ -2,4 +2,5 @@
     <string name="app_name">TipApp</string>
     <string name="total_per_person">Total Per Person</string>
     <string name="money_icon">Money Icon</string>
+    <string name="bill_amount">Enter Bill Amount</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.applecompose.tipapp.presentation.components
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -27,30 +28,25 @@ fun InputField(
 	valueState: MutableState<String>,
 	labelId: String,
 	enabled: Boolean,
-	singleLine: Boolean,
+	isSingleLine: Boolean = true,
 	keyboardType: KeyboardType = KeyboardType.Number,
 	imeAction: ImeAction = ImeAction.Next,
 	onAction: KeyboardActions = KeyboardActions.Default
-
-
 ) {
 	OutlinedTextField(
-	value = valueState.value,
-	onValueChange = { valueState.value = it },
-	label = { Text(text =  labelId) },
-	leadingIcon = { Icon(imageVector = Icons.Rounded.AttachMoney,
-		contentDescription = stringResource(R.string.money_icon)
-			)
-	},
-		singleLine = singleLine,
-		textStyle = TextStyle(fontSize = 18.sp, color = MaterialTheme.colors.mediumGreen),
+		value = valueState.value,
+		onValueChange = { valueState.value = it },
+		label = { Text(text =  labelId) },
+		leadingIcon = { Icon(imageVector = Icons.Rounded.AttachMoney,
+			contentDescription = "Money Icon")
+		},
+		singleLine = isSingleLine,
+		textStyle = TextStyle(fontSize = 18.sp, color = MaterialTheme.colors.onBackground),
 		modifier = modifier
-			.padding(bottom = 10.dp, start = 10.dp, end = 10.dp),
+			.padding(bottom = 10.dp, start = 10.dp, end = 10.dp)
+			.fillMaxWidth(),
 		enabled = enabled,
-		keyboardOptions = KeyboardOptions(keyboardType = keyboardType,
-			imeAction = imeAction
-		),
-		keyboardActions = onAction,
-		)
-
+		keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
+		keyboardActions = onAction
+	)
 }
