@@ -13,14 +13,11 @@ import androidx.compose.material.icons.rounded.AttachMoney
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.applecompose.tipapp.R
-import com.applecompose.tipapp.ui.theme.mediumGreen
 
 @Composable
 fun InputField(
@@ -28,17 +25,23 @@ fun InputField(
 	valueState: MutableState<String>,
 	labelId: String,
 	enabled: Boolean,
-	isSingleLine: Boolean = true,
+	isSingleLine: Boolean,
 	keyboardType: KeyboardType = KeyboardType.Number,
-	imeAction: ImeAction = ImeAction.Next,
+	imeAction: ImeAction = ImeAction.Done,
 	onAction: KeyboardActions = KeyboardActions.Default
 ) {
+
 	OutlinedTextField(
 		value = valueState.value,
 		onValueChange = { valueState.value = it },
-		label = { Text(text =  labelId) },
-		leadingIcon = { Icon(imageVector = Icons.Rounded.AttachMoney,
-			contentDescription = "Money Icon")
+		label = {
+			Text(text = labelId)
+		},
+		leadingIcon = {
+			Icon(
+				imageVector = Icons.Rounded.AttachMoney,
+				contentDescription = "Money Icon"
+			)
 		},
 		singleLine = isSingleLine,
 		textStyle = TextStyle(fontSize = 18.sp, color = MaterialTheme.colors.onBackground),
@@ -46,7 +49,8 @@ fun InputField(
 			.padding(bottom = 10.dp, start = 10.dp, end = 10.dp)
 			.fillMaxWidth(),
 		enabled = enabled,
-		keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
+		keyboardOptions = KeyboardOptions(keyboardType = keyboardType,
+			imeAction = imeAction),
 		keyboardActions = onAction
 	)
 }

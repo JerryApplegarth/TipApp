@@ -3,6 +3,7 @@ package com.applecompose.tipapp.presentation.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -13,37 +14,47 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.applecompose.tipapp.R
 import com.applecompose.tipapp.ui.theme.cardBackground
+import com.applecompose.tipapp.ui.theme.fontColor
+import com.applecompose.tipapp.ui.theme.newBackgroundColor
 
 
+@Preview
 @Composable
-fun TopHeader(totalPerPers: Double = 0.0) {
-	TopAppBar()
-
-	Surface(modifier = Modifier
-		.fillMaxWidth()
-		.height(150.dp)
-		.padding(12.dp)
-		.clip(shape = CircleShape.copy(all = CornerSize(12.dp))),
-		color = MaterialTheme.colors.cardBackground
+fun TopHeader(totalPerPerson: Double = 0.00, modifier: Modifier = Modifier) {
+	Surface(
+		modifier
+			.fillMaxWidth()
+			.height(150.dp)
+			.padding(16.dp)
+			.clip(shape = CircleShape.copy(all = CornerSize(12.dp)))
+			.clip(shape = RoundedCornerShape(corner = CornerSize(16.dp))),
+		color = MaterialTheme.colors.newBackgroundColor
 	) {
 
 		Column(
-			modifier = Modifier.padding(12.dp),
+			modifier
+				.padding(12.dp),
 			horizontalAlignment = Alignment.CenterHorizontally,
-			verticalArrangement = Arrangement.Center) {
-
-			Text(text = stringResource(id = R.string.total_per_person),
-				style = MaterialTheme.typography.subtitle1)
-			val total =  "%.2f".format(totalPerPers)
-			Text(text = "\$$total",
-				style = MaterialTheme.typography.h4)
-
-
+			verticalArrangement = Arrangement.Center
+		) {
+			val total = "%.2f".format(totalPerPerson)
+			Text(
+				text = "Total Per Person",
+				style = MaterialTheme.typography.h5
+			)
+			Text(
+				text = "$$total",
+				style = MaterialTheme.typography.h3,
+				fontFamily = FontFamily.Monospace,
+				fontWeight = FontWeight.Bold,
+				color = MaterialTheme.colors.fontColor
+			)
 		}
-
 	}
-
 }
