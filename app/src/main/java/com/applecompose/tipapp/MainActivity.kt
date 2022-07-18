@@ -20,6 +20,7 @@ import com.applecompose.tipapp.ui.theme.TipAppTheme
 import com.applecompose.tipapp.ui.theme.newBackgroundColor
 
 class MainActivity : ComponentActivity() {
+	@ExperimentalComposeUiApi
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContent {
@@ -56,6 +57,7 @@ fun HomeScreen() {
 
 
 
+@ExperimentalComposeUiApi
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DefaultPreview() {

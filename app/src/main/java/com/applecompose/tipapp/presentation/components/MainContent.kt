@@ -42,9 +42,7 @@ fun MainContent() {
 				onAction = KeyboardActions {
 					if (!validState) return@KeyboardActions
 					// To Do
-					if (keyboardController != null) {
-						keyboardController.hide()
-					}
+					keyboardController?.hide()
 				}
 			)
 
