@@ -10,18 +10,22 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.applecompose.tipapp.R
 import com.applecompose.tipapp.ui.theme.cardBackground
 import com.applecompose.tipapp.ui.theme.newBackgroundColor
 
+@ExperimentalComposeUiApi
 @Composable
 fun TopHeader(totalPerPerson: Double = 12.56) {
 	Column(
@@ -50,7 +54,7 @@ fun TopHeader(totalPerPerson: Double = 12.56) {
 					modifier = Modifier
 						.padding(6.dp)
 						.fillMaxWidth(),
-					text = "Total Per Person",
+					text = stringResource(R.string.total_per_person),
 					textAlign = TextAlign.Center,
 					fontSize = 24.sp
 					)
@@ -66,20 +70,14 @@ fun TopHeader(totalPerPerson: Double = 12.56) {
 					fontStyle = FontStyle.Italic,
 					fontWeight = FontWeight.Bold
 					)
-
 			}
-
 		}
 		Column(
 			modifier = Modifier
 				.padding(6.dp),
 			horizontalAlignment = Alignment.Start
 		) {
-
+			MainContent()
 		}
-
-		MainContent()
-
 	}
-
 }
